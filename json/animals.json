@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Wolf",
+        "power": 5,
+        "ability": "Pack Hunting",
+        "cost": {
+            "type": "Meat",
+            "amount": 10
+        }
+    }
+]

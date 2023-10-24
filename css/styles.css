@@ -1,0 +1,60 @@
+/* Add the following CSS styles to your existing styles.css file */
+
+/* Sidebar styles */
+.sidebar {
+    flex: 1;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    overflow: auto;
+}
+
+.resources h2,
+.animals h2,
+.captains h2 {
+    color: #f0f0f0;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+#animal-list,
+#captain-list {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+}
+
+/* Top bar styles */
+.top-bar {
+    background-color: #222;
+    padding: 10px;
+    text-align: center;
+}
+
+#map-button {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#map-button:hover {
+    background-color: #45a049;
+}
+
+/* Resource display styles */
+.resources {
+    margin-bottom: 20px;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        flex: 0;
+    }
+}

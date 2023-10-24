@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <title>Forest for Ferals</title>
 </head>
 <body>
-    <div class="game-container">
+    <div class="game-container"><!-- Add the following content within the <div class="sidebar"> element -->
         <div class="sidebar">
-            <!-- Sidebar content: Resource display, upgrades, etc. -->
+            <div class="resources">
+                <h2>Resources:</h2>
+                <span id="meat">0 Meat</span>
+            </div>
+            <div class="animals">
+                <h2>Your Animals:</h2>
+                <ul id="animal-list">
+                    <!-- Animal list items will be added dynamically using JavaScript -->
+                </ul>
+            </div>
+            <div class="captains">
+                <h2>Your Captains:</h2>
+                <ul id="captain-list">
+                    <!-- Captain list items will be added dynamically using JavaScript -->
+                </ul>
+            </div>
         </div>
-        <div class="main-content">
-            <!-- Forest view, map of Hunts, and team selection -->
-        </div>
+        
+        <!-- Add the following button at the top for accessing the map of Hunts -->
+        <div class="top-bar">
+            <button id="map-button">Map of Hunts</button>
+        </div>        
     </div>
-    <script src="script.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/classes.js"></script>
 </body>
 </html>
