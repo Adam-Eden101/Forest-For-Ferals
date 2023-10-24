@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let wolfCount = 5; // Starting with 5 wolves
 
     // Load animals from JSON
-    fetch('./json/animals.json')
+    fetch('https://github.com/Adam-Eden101/Forest-For-Ferals/blob/main/json/animals.json')
         .then(response => response.json())
         .then(data => {
             // Find the wolf data
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error loading animals:', error));
 
     // Load captains from JSON
-    fetch('./json/captains.json')
+    fetch('https://github.com/Adam-Eden101/Forest-For-Ferals/blob/main/json/captains.json')
         .then(response => response.json())
         .then(data => {
             // Find the captain data
