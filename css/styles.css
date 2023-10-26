@@ -1,60 +1,42 @@
-/* Add the following CSS styles to your existing styles.css file */
-
-/* Sidebar styles */
-.sidebar {
-    flex: 1;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-    overflow: auto;
-}
-
-.resources h2,
-.animals h2,
-.captains h2 {
-    color: #f0f0f0;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
-
-#animal-list,
-#captain-list {
-    list-style: none;
+html, body, .game-container {
+    height: 100%;
+    margin: 0;
     padding: 0;
+    background-color: bisque;
 }
 
-li {
-    margin: 5px 0;
+.game-container {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Top bar styles */
+.flex-container {
+    display: flex;
+}
+
+.bar-style {
+    min-height: 50px;
+}
+
 .top-bar {
-    background-color: #222;
-    padding: 10px;
-    text-align: center;
+    background-color: rgb(172, 125, 68);
 }
 
-#map-button {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
+.main-div {
+    flex: 1;
+    background-color: rgb(172, 101, 68);
 }
 
-#map-button:hover {
-    background-color: #45a049;
+.left-main {
+    flex: 1;
+    background-color: rgb(163, 69, 26);
 }
 
-/* Resource display styles */
-.resources {
-    margin-bottom: 20px;
+.main-main {
+    flex: 3;
+    background-color: rgb(101, 71, 57);
 }
 
-/* Adjustments for smaller screens */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        flex: 0;
-    }
+.bottom-bar {
+    background-color: rgb(99, 66, 26);
 }

@@ -1,59 +1,44 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize resources and animal counts
-    let resources = {
-        Meat: 0
-    };
-    let wolfCount = 5; // Starting with 5 wolves
+const player = initPlayer();
 
-    // Load animals from JSON
-    fetch('https://github.com/Adam-Eden101/Forest-For-Ferals/blob/main/json/animals.json')
-        .then(response => response.json())
-        .then(data => {
-            // Find the wolf data
-            const wolfData = data.find(animal => animal.name === 'Wolf');
-            // Create an instance of the Animal class
-            const wolf = new Animal(wolfData.name, wolfData.power, wolfData.ability);
-            // Display wolf data in the sidebar
-            const animalList = document.getElementById('animal-list');
-            const wolfItem = document.createElement('li');
-            wolfItem.textContent = `${wolf.name}: Power ${wolf.power}, Ability: ${wolf.ability}`;
-            animalList.appendChild(wolfItem);
-            // Update the cost for buying a wolf
-            const buyWolfButton = document.getElementById('buy-wolf');
-            const wolfCost = wolfData.cost.amount;
-            const wolfCostType = wolfData.cost.type;
-            buyWolfButton.textContent = `Buy Wolf (${wolfCost} ${wolfCostType})`;
-            // Handle the "Buy Wolf" button click event
-            buyWolfButton.addEventListener('click', function () {
-                if (resources[wolfCostType] >= wolfCost) {
-                    // Deduct the cost from resources
-                    resources[wolfCostType] -= wolfCost;
-                    meatDisplay.textContent = `${resources.Meat} Meat`;
-                    // Increment the wolf count
-                    wolfCount++;
-                    wolfCountItem.textContent = `${wolfCount} ${wolf.name}s`;
-                } else {
-                    alert(`Not enough ${wolfCostType} to buy a wolf!`);
-                }
-            });
-        })
-        .catch(error => console.error('Error loading animals:', error));
+updateResourceDisplay(player);
+updateAnimalList(player);
 
-    // Load captains from JSON
-    fetch('https://github.com/Adam-Eden101/Forest-For-Ferals/blob/main/json/captains.json')
-        .then(response => response.json())
-        .then(data => {
-            // Find the captain data
-            const iemyrData = data.find(captain => captain.name === 'Iemyr');
-            // Create an instance of the Captain class
-            const iemyr = new Captain(iemyrData.name, iemyrData.ability);
-            // Display captain data in the sidebar
-            const captainList = document.getElementById('captain-list');
-            const iemyrItem = document.createElement('li');
-            iemyrItem.textContent = `${iemyr.name}: Ability: ${iemyr.ability}`;
-            captainList.appendChild(iemyrItem);
-        })
-        .catch(error => console.error('Error loading captains:', error));
+function initPlayer() {
+    const player = new Player();
+    player.addResource('meat', 50);
 
-    // ... (the rest of your code remains the same)
-});
+    const wolf = new Animal("Wolf", 5, "Pack Mentality", "meat", 5);
+    wolf.add(5);
+    player.addAnimal(wolf);
+
+    return player;
+}
+
+function updateResourceDisplay(player) {
+    const resourceDisplayDiv = document.getElementById('resource-display');
+    resourceDisplayDiv.innerHTML = `
+        <div>Meat: ${player.resources.meat}</div>
+    `;
+}
+
+function updateAnimalList(player) {
+    const animalListDiv = document.getElementById('animal-list');
+    animalListDiv.innerHTML = player.animals.map(animal => `${animal.name} x${animal.quantity}`).join("<br>");
+
+    const buyWolfButton = document.createElement('button');
+    buyWolfButton.textContent = 'Buy Wolf (10 Meat)';
+    buyWolfButton.addEventListener('click', () => buyAnimal(player, 'Wolf', 'meat', 10));
+    animalListDiv.appendChild(buyWolfButton);
+}
+
+function buyAnimal(player, animalName, costType, costAmount) {
+    const cost = costType === 'meat' ? costAmount : 0;
+    if (player.resources[costType] >= cost) {
+        player.addResource(costType, -cost);
+        player.animals.find(animal => animal.name === animalName).add(1);
+        updateAnimalList(player);
+        updateResourceDisplay(player);
+    } else {
+        alert(`Not enough ${costType} to buy a ${animalName}!`);
+    }
+}

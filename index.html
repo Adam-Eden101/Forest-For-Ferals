@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/hunt.css">
     <title>Forest for Ferals</title>
 </head>
+
 <body>
-    <div class="game-container"><!-- Add the following content within the <div class="sidebar"> element -->
-        <div class="sidebar">
-            <div class="resources">
-                <h2>Resources:</h2>
-                <span id="meat">0 Meat</span>
+    <div class="game-container">
+        <!-- Top bar for resource display -->
+        <div class="top-bar bar-style" id="resource-display"></div>
+        
+        <!-- Main content area -->
+        <div class="main-div flex-container">
+            <div class="left-main"> <!-- Sidebar for animal list and actions -->
+                <div id="animal-list"></div>
             </div>
-            <div class="animals">
-                <h2>Your Animals:</h2>
-                <ul id="animal-list">
-                    <!-- Animal list items will be added dynamically using JavaScript -->
-                </ul>
+            <div class="main-main">
+                <div id="available-hunts">
+                    <button id="start-hunt-button">Start a New Hunt</button>
+                </div>
+                
+                <div id="ongoing-hunts"></div>
+                
+                <div id="animal-selection-modal" style="display: none;">
+                    <div id="available-animals-for-hunt"></div>
+                    <button id="confirm-selection">Start Hunt</button>
+                </div>                
             </div>
-            <div class="captains">
-                <h2>Your Captains:</h2>
-                <ul id="captain-list">
-                    <!-- Captain list items will be added dynamically using JavaScript -->
-                </ul>
-            </div>
+            
         </div>
         
-        <!-- Add the following button at the top for accessing the map of Hunts -->
-        <div class="top-bar">
-            <button id="map-button">Map of Hunts</button>
-        </div>        
+        <!-- Bottom bar for other functionalities (still empty for now) -->
+        <div class="bottom-bar bar-style"></div>
     </div>
+    
+    <!-- JavaScript files -->
+    <script src="./js/player.js"></script>
+    <script src="./js/animals.js"></script>
+    <script src="./js/hunts.js"></script>
+    <script src="./js/captains.js"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/classes.js"></script>
 </body>
+
 </html>
